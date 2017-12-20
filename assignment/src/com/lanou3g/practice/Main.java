@@ -2,15 +2,19 @@ package com.lanou3g.practice;
 
 import com.lanou3g.api.Phone;
 import com.lanou3g.api.Weather;
+import com.lanou3g.mysql.Begin;
+import com.lanou3g.mysql.JdbcUtil;
 import org.dom4j.DocumentException;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    public static void main(String[] args) throws IOException, DocumentException {
+    public static void main(String[] args) throws IOException, DocumentException, SQLException, ClassNotFoundException {
         Scanner input = new Scanner(System.in);
         boolean flg = true;
         boolean flg2 = true;
@@ -61,8 +65,10 @@ public class Main {
                         System.out.println("密码格式不正确,密码由字母和数字组成1-16位");
                     }
 
-                    User u = new Users(s,s1,s2);
-                    ud.register(u);
+                    Begin.register(s2,s,s1);
+
+//                    User u = new Users(s,s1,s2);
+//                    ud.register(u);
                     break;
                 case 2:
                     input.nextLine();
@@ -70,9 +76,10 @@ public class Main {
                     String un = input.next();
                     System.out.println("请输入密码:");
                     String pw = input.next();
-                    Detection.login(un,pw);
+                    Begin.login(un,pw);
+//                    Detection.login(un,pw);
                     System.out.println("登录成功");
-                    System.out.println("1-查询天气 2-查询手机号归属地 3-手速游戏 4-查询手速游戏前十用户");
+                    System.out.println("1-查询天气 2-查询手机号归属地 3-手速游戏 4-查询手速游戏前十用户 5-修改信息");
                     switch (input.nextInt()){
                         case 1:
                             System.out.println("请输入要查询的城市:");
@@ -94,9 +101,10 @@ public class Main {
                         case 4:
                             System.out.println("cx");
                             break;
+                        case 5:
+
                     }
 
-                    break;
                 default:
                     System.out.println("输入有误");
             }
