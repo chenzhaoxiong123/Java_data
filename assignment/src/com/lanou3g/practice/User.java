@@ -12,6 +12,15 @@ public class User {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
+
     public String getPassword() {
         return password;
     }
@@ -33,11 +42,6 @@ public class User {
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "name='" + name + '\'' + ", password='" + password + '\'' + ", userName='" + userName + '\'' + '}';
     }
 
     public String getUserName() {

@@ -76,9 +76,16 @@ public class Main {
                     String un = input.next();
                     System.out.println("请输入密码:");
                     String pw = input.next();
-                    Begin.login(un,pw);
+                    boolean b = Begin.login(un, pw);
+//                    System.out.println(b);
+                        if (b== true){
+//                            System.out.println("123");
+                        }else {
+                            System.out.println("用户信息验证失败");
+                            break;
+                        }
 //                    Detection.login(un,pw);
-                    System.out.println("登录成功");
+//                    System.out.println("登录成功");
                     System.out.println("1-查询天气 2-查询手机号归属地 3-手速游戏 4-查询手速游戏前十用户 5-修改信息");
                     switch (input.nextInt()){
                         case 1:
@@ -102,7 +109,15 @@ public class Main {
                             System.out.println("cx");
                             break;
                         case 5:
-
+                            System.out.println("请输入您要修改的信息");
+                            System.out.println("请修改姓名:");
+                            input.nextLine();
+                            String t = input.nextLine();
+                            System.out.println("请修改用户名:");
+                            String t1 = input.nextLine();
+                            System.out.println("请修改密码:");
+                            String t2 = input.nextLine();
+                            Begin.modification(t,t1,t2);
                     }
 
                 default:
