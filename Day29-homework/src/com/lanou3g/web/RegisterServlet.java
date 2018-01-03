@@ -32,18 +32,18 @@ public class RegisterServlet extends HttpServlet {
         try {
             int inserts = userDao.inserts(user);
             if (inserts==1){
-                response.sendRedirect("http://localhost:8080/Login.html");
+                response.sendRedirect("http://localhost:8080/login.html");
             }else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/Register.html");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/register.html");
                 dispatcher.include(request,response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        for (Map.Entry<String, String[]> stringEntry : parameterMap.entrySet()) {
-            System.out.println(stringEntry.getKey() + "--" + Arrays.toString(stringEntry.getValue()));
-        }
+//        for (Map.Entry<String, String[]> stringEntry : parameterMap.entrySet()) {
+//            System.out.println(stringEntry.getKey() + "--" + Arrays.toString(stringEntry.getValue()));
+//        }
 
     }
 

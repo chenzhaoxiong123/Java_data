@@ -16,31 +16,51 @@
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <table id="11" parent="10" name="user"/>
-    <column id="12" parent="11" name="id">
+    <table id="11" parent="10" name="book"/>
+    <table id="12" parent="10" name="user"/>
+    <column id="13" parent="11" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="13" parent="11" name="name">
+    <column id="14" parent="11" name="bkname">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="14" parent="11" name="username">
+    <column id="15" parent="11" name="author">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="11" name="password">
+    <column id="16" parent="11" name="price">
       <Position>4</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="17" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="18" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="19" parent="12" name="username">
+      <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="16" parent="11" name="PRIMARY">
+    <column id="20" parent="12" name="password">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="21" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
+      <ColNames>username</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

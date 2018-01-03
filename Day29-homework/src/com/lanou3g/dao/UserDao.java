@@ -11,20 +11,6 @@ import java.util.List;
 
 public class UserDao {
     private QueryRunner qr = new QueryRunner();
-   public List<User> find() throws SQLException {
-       String sql = "select * from user";
-       Connection conn = null;
-       conn = JdbcUtil.getConnection();
-       try {
-           List<User> users = qr.query(conn, sql, new BeanListHandler<User>(User.class));
-           return users;
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }finally {
-           conn.close();
-       }
-       return null;
-   }
 
    public int inserts(User user) throws SQLException {
        String sql = "insert into user values(null,?,?)";
@@ -39,12 +25,14 @@ public class UserDao {
        }
        return 0;
    }
+
     public User findByName(String username) throws SQLException {
         String sql = "select * from user where username=?";
         Connection conn = null;
         conn = JdbcUtil.getConnection();
         try {
             User user = qr.query(conn, sql, new BeanHandler<User>(User.class),username);
+            System.out.println(user);
             return user;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -7,37 +7,68 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-    <script src="js/jquery-3.2.1.min.js"></script>
-  </head>
-  <body>
-  <button id="btn">点我</button>
-  <table border="1">
-    <tr>
-      <th>用户名</th>
-      <th>密码</th>
-    </tr>
-  </table>
-  </body>
-  <script type="text/javascript">
-      $('#btn').click(function () {
-          $.getJSON("http://localhost:8080/show",function (data, status) {
-              if (status=="success"){
-                  $.each(data,function (index, obj) {
-                      var username = obj['username'];
-                      var password = obj['password'];
-                      console.log(username);
-                      $('table').append(
-                          $('<tr>').append(
-                              $('<td>').text(username)
-                          ).append(
-                              $('<td>').text(password)
-                          )
-                      )
-                  })
-              }
-          })
-      })
-  </script>
+<head>
+  <title>主页</title>
+  <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+  <%
+    if (session.getAttribute("username")!=null){
+  %>
+    用户名:<%=session.getAttribute("username")%><br/>
+    密码:<%=session.getAttribute("password")%><br/>
+    <form action="quit" method="post">
+      <input type="submit" name="quit" value="退出">
+    </form>
+  <%
+    }else {
+  %>
+    <%request.getRequestDispatcher("/login.html");%>
+  <%
+    }
+  %>
+<%--<h1>用户名：<span id="username"></span></h1>--%>
+<%--<h1>密码：<span id="password"></span></h1>--%>
+<table id="b"></table>
+</body>
+<script type="text/javascript">
+//    $.getJSON("http://localhost:8080/show",
+//        function (json,status) {
+//            if(status == "success"){
+//                $('#username').text(json['username']);
+//                $('#password').text(json['password']);
+//            }
+//        })
+$.getJSON("http://localhost:8080/book",function (json,status) {
+    console.log(status);
+    if (status == "success"){
+        $('#b').append(
+            $('<tr>').append(
+                $('<th>').text("书名")
+            ).append(
+                $('<th>').text("作者")
+            ).append(
+                $('<th>').text("价钱")
+            )
+        );
+        $.each(json,function (index, obj) {
+            var bkname = obj['bkname'];
+            var author = obj['author'];
+            var price = obj['price'];
+            $('#b').append(
+                $('<tr>')
+                    .append(
+                        $('<td>').text(bkname)
+                    ).append(
+                    $('<td>').text(author)
+                ).append(
+                    $('<td>').text(price)
+                )
+            )
+        })
+    }
+
+})
+</script>
 </html>
