@@ -1,4 +1,4 @@
-package com.lanou3g.dao;
+package com.lanou3g.util;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

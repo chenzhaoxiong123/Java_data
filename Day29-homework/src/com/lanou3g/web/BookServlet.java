@@ -1,9 +1,8 @@
 package com.lanou3g.web;
 
 import com.lanou3g.dao.BookDao;
-import com.lanou3g.daomain.Book;
+import com.lanou3g.bean.Book;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

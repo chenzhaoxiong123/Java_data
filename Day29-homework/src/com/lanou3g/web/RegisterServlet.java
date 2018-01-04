@@ -1,7 +1,7 @@
 package com.lanou3g.web;
 
 import com.lanou3g.dao.UserDao;
-import com.lanou3g.daomain.User;
+import com.lanou3g.bean.User;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Map;
 
 @WebServlet(name = "RegisterServlet",urlPatterns = "/register")
@@ -32,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
         try {
             int inserts = userDao.inserts(user);
             if (inserts==1){
-                response.sendRedirect("http://localhost:8080/login.html");
+                response.sendRedirect("http://localhost:8080/login.jsp");
             }else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/register.html");
                 dispatcher.include(request,response);

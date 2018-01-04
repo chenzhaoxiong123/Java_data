@@ -1,4 +1,4 @@
-package com.lanou3g.daomain;
+package com.lanou3g.bean;
 
 public class User {
     private String username;

@@ -1,8 +1,8 @@
 package com.lanou3g.dao;
 
-import com.lanou3g.daomain.Book;
+import com.lanou3g.bean.Book;
+import com.lanou3g.util.JdbcUtil;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.Connection;

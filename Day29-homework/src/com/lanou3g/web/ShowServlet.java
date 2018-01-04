@@ -1,8 +1,6 @@
 package com.lanou3g.web;
 
-import com.lanou3g.dao.UserDao;
-import com.lanou3g.daomain.User;
-import net.sf.json.JSONArray;
+import com.lanou3g.bean.User;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -11,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet(name = "ShowServlet",urlPatterns = "/show")
 public class ShowServlet extends HttpServlet {

@@ -1,13 +1,12 @@
 package com.lanou3g.dao;
 
-import com.lanou3g.daomain.User;
+import com.lanou3g.bean.User;
+import com.lanou3g.util.JdbcUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 public class UserDao {
     private QueryRunner qr = new QueryRunner();

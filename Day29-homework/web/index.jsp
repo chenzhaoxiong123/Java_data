@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.lanou3g.bean.User" %><%--
   Created by IntelliJ IDEA.
   User: lanou
   Date: 2018/1/2
@@ -14,13 +14,33 @@
 <body>
 
   <%
+    if(session.getAttribute("user")!=null){
+      User user = (User) session.getAttribute("user");
+      session.setAttribute("username",user.getUsername());
+      session.setAttribute("password",user.getPassword());
+      %>
+      <table id="b" border="1"></table>
+      <%
+    }else {
+        out.write("请登录");
+  %>
+        <a href="http://localhost:8080/register.html">注册</a>
+  <%
+  %>
+        <a href="http://localhost:8080/login.jsp">登录</a>
+  <%
+    }
+  %>
+
+  <%
     if (session.getAttribute("username")!=null){
   %>
     用户名:<%=session.getAttribute("username")%><br/>
     密码:<%=session.getAttribute("password")%><br/>
-    <form action="quit" method="post">
-      <input type="submit" name="quit" value="退出">
-    </form>
+
+    <a href="login.jsp">退出</a>
+
+
   <%
     }else {
   %>
@@ -30,7 +50,7 @@
   %>
 <%--<h1>用户名：<span id="username"></span></h1>--%>
 <%--<h1>密码：<span id="password"></span></h1>--%>
-<table id="b" border="1"></table>
+
 </body>
 <script type="text/javascript">
 //    $.getJSON("http://localhost:8080/show",

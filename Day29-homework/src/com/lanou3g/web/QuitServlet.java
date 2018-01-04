@@ -14,7 +14,7 @@ public class QuitServlet extends HttpServlet {
         String quit = request.getParameter("quit");
         HttpSession session = request.getSession();
         session.setAttribute("quit",quit);
-        request.getRequestDispatcher("/login.html").forward(request,response);
+        request.getRequestDispatcher("http://localhost:8080/login.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

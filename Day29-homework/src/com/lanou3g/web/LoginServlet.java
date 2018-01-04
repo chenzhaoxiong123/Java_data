@@ -1,24 +1,13 @@
 package com.lanou3g.web;
 
-import com.lanou3g.dao.BookDao;
 import com.lanou3g.dao.UserDao;
-import com.lanou3g.daomain.Book;
-import com.lanou3g.daomain.User;
-import org.apache.commons.beanutils.BeanUtils;
+import com.lanou3g.bean.User;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 @WebServlet(name = "LoginServlet",urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
@@ -36,15 +25,20 @@ public class LoginServlet extends HttpServlet {
                 getServletContext().setAttribute("user",user);
 
                 HttpSession session = request.getSession();
-                session.setAttribute("username",username);
-                session.setAttribute("password",password);
+//                session.setAttribute("username",username);
+//                session.setAttribute("password",password);
+                session.setAttribute("user",user);
 
+                Cookie cookie = new Cookie("user",user.getUsername());
+                cookie.setPath("/login.jsp");
+                cookie.setMaxAge(60);
+                response.addCookie(cookie);
 
 
                 request.getRequestDispatcher("/index.jsp").forward(request,response);
 //                response.sendRedirect("http://localhost:8080/index.jsp");
             }else {
-                response.sendRedirect("http://localhost:8080/login.html");
+                response.sendRedirect("http://localhost:8080/login.jsp");
 //                RequestDispatcher dispatcher = request.getRequestDispatcher("/login.html");
 //                dispatcher.forward(request,response);
             }
@@ -64,7 +58,15 @@ public class LoginServlet extends HttpServlet {
 //        List<Book> book1 = bookDao.findBook();
 //        System.out.println(book1);
 
-
+//        username = null;
+//        Cookie[] cookies = request.getCookies();
+//        if (cookies != null){
+//            for (int i = 0; i < cookies.length; i++){
+//                if (cookies[i].getName().equals(username)){
+//                    username = cookies[i].getValue();
+//                }
+//            }
+//        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
